@@ -1,0 +1,30 @@
+body{
+    background-color: rgb(19, 19, 19);
+}
+
+ol {
+    counter-reset: item;
+    padding-left: 10px;
+}
+li {
+    display: block
+}
+li:before {
+    content: counters(item, ".") " ";
+    counter-increment: item
+}
+
+#GameImage {  
+    text-align: center;
+}
+
+#GameName{
+	position: absolute;
+	top: 6%;
+	left: 45%;
+}
+
+#GameMenu{
+    border:1px solid; padding:10px;
+    margin-right: 1300px;
+}
