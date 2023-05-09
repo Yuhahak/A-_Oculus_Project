@@ -14,17 +14,35 @@ li:before {
     counter-increment: item
 }
 
-#GameImage {  
+.GameImage {  
     text-align: center;
 }
 
-#GameName{
+.GameName{
 	position: absolute;
 	top: 6%;
 	left: 45%;
 }
 
-#GameMenu{
+.GameMenu{
     border:1px solid; padding:10px;
-    margin-right: 1300px;
+    float: right;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+nav, section {
+    float: right;
+}
+
+section {
+    border: 1px solid;
+    margin: 5px 5px;
+    width: 100%;
+    height: 100%;
+}
+
+article {
+    width: 100%;
+    height: 100%;
 }
