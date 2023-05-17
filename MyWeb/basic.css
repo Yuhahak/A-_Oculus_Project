@@ -3,7 +3,7 @@ html{
 }
 
 body{
-    background-color: rgb(19, 19, 19);
+    background-color: rgb(255, 255, 255);
 }
 
 ol {
@@ -13,10 +13,7 @@ ol {
 li {
     display: block
 }
-li:before {
-    content: counters(item, ".") " ";
-    counter-increment: item
-}
+
 
 #GameImage {  
     text-align: center;
@@ -30,8 +27,9 @@ li:before {
 
 #GameMenu{
     border:1px solid; padding:10px;
-    margin-right: 1250px;
+    margin-right: 1200px;
     margin-left: 50px;
+    overflow: visible;
 }
 
 .updatesheeticons{
@@ -67,4 +65,9 @@ li:before {
 }
 
 
+details > summary{
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
