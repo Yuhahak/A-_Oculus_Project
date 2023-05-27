@@ -26,10 +26,9 @@ li {
 }
 
 #GameMenu{
-    border:1px solid; padding:10px;
-    margin-right: 1200px;
-    margin-left: 50px;
-    overflow: visible;
+    border:1px solid;
+    box-sizing: border-box;
+    padding-left: 15px;
 }
 
 .updatesheeticons{
