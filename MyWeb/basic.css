@@ -29,6 +29,7 @@ li {
     border:1px solid;
     box-sizing: border-box;
     padding-left: 15px;
+    width: 200px;
 }
 
 .updatesheeticons{
