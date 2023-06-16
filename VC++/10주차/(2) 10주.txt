@@ -1,0 +1,31 @@
+(2) 10주
+
+- 컨트롤이란?
+ㄴ 표준화된 형태와 특성을 가진 윈도우
+ㄴ 사용자의 입력을 받거나 정보를 보여줌
+
+-통지 메시지 vs 컨트롤 메시지 개념 및 비교
+
+
+- 표준 컨트롤과 공통 컨트롤, 스크롤바의 통지 메시지
+WM_COMMAND = 표준(버튼,스태틱,에디트,리스트박스,콤보박스)
+WM_NOTIFY = 공통
+WM_VSCROLL , WM_HSCROLL = 스크롤바
+
+- (button, combo box, edit, list box)의 통지 코드, 공통 컨트롤 통지 코드(NM_CLICK, NM_RCLICK, NM_DBLCLK, NM_SETFOCUS, NM_KILLFOCUS)
+
+
+- 통지 메시지 처리 방법 (가상함수 vs 메시지 핸들러)
+가상함수 = 표준 컨트롤은 OnCommand 가상함수 사용
+                공통 컨트롤은 OnNotify 가상함수 사용
+
+메시지 핸들러 = 표준 컨트롤은 ON_Notification,ON_CONTROL매크로 사용
+
+	      공통 컨트롤은 ON_NOTIFY 매크로 사용
+
+
+- CEdit 클래스 멤버함수와 CWnd 멤버함수 활용 (함수명과 활용방법)
+
+- 스크롤바 코드의 개념
+사용자가 스크롤바를 조작하면 WM_HSCROLL 또는 WM_VSCROLL메시지 발생
+메시지와 더불어 스크롤바 코드가 전달됨
