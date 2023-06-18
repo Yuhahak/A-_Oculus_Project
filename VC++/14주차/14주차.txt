@@ -1,0 +1,15 @@
+14주
+- 리스트 컨트롤 클래스의 함수명과 역할 
+InsertColumn()
+InsertItem()
+SetItemText()
+GetItemText()
+DeleteItem()
+GetItemCount()
+
+
+- 리스트 컨트롤 활용하기, 
+스핀 컨트롤과 프로그레스 컨트롤 활용하기 예제
+(ListCtrlTest.zip 의 OnInitDialog(), 
+OnNMRClickList1(), OnVScroll() 함수 구현 참고)]
+14_1
