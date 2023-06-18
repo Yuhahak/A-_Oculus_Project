@@ -1,0 +1,19 @@
+(4) 12주
+- DDX 개념
+대화상자의 컨트롤과 멤버변수 사이에서 정보교환이 자동으로 이뤄지도록 하는 매커니즘
+
+
+- 데이터 교환 방법(UpdateData() 사용법 및 UpdateData() 
+호출 시의 DoDataExchange, DDX_Text, AfxSetWindowText, GetWindowText 호출 순서)
+UpdateData(False) = m_strInput에 저장된 문자열을 편집 컨트롤로 보냄
+UpdateData(True) = 편집 컨트롤에 입력된 문자열을 m_strInput으로 가져옴
+
+- 비모드형 대화상자 작성 시 주의사항
+- CDialog::Create() 함수를 이용하여 생성
+- CWnd::DestroyWindow() 함수를 이용하여 닫기
+- 힙에 생성
+
+- 비모드형 대화상자를 힙에 생성하고 활용한 후 생성한 대화상자 객체는 
+윈도우가 파괴될 때 이 가상함수를 재정의해서 정리해야 한다. 
+윈도우가 파괴될 때 마지막으로 호출되는 이 가상 함수는?
+OnCancel

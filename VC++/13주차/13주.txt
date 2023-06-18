@@ -1,0 +1,29 @@
+- 도큐먼트 프레임 윈도우란?
+ ㄴ 도큐먼트의 내용을 화면에 표시하는 역할을 하는 뷰를 자식으로 갖는 윈도우
+ = 뷰의 부모 윈도우 = 뷰를 감싸고 있는 윈도우
+ ㄴ SDI에서는 메인 윈도우 = 도큐먼트 프레임 윈도우
+
+- SDI에서 주요 객체를 참조하는 함수명과 역할(GetDocument, GetActiveView, AfxGetApp, AfxGetMainWnd)
+AfxGetApp = 응용 프로그램 객체의 주소를 리턴
+AfxGetMainWnd = 메인 윈도우 객체의 주소를 리턴
+GetActiveView = 현재 작업하고 있는 활성 뷰 객체의 주소를 리턴
+GetDocument = 뷰 객체와 연결된 도큐먼트 객체의 주소를 리턴
+
+- GetDlgItemText(), SetDlgItemText() 함수 사용법
+GetDlgItemText() = 읽어오는거
+SetDlgItemText() = 쓰는거
+
+- SetModifiedFlag 함수의 역할은?
+데이터가 수정되었음을 도큐먼트 객체에 알림
+
+- UpdateAllViews 함수의 역할과 내부 호출 순서(UpdateAllViews -> OnUpdate -> Invalidate -> OnPaint -> OnDraw)
+- 명령 라우팅 순서 6개
+1. 활성 뷰 객체
+2. 활성 도큐먼트 객체
+3. 도큐먼트 템플릿 객체
+4. 프레임 윈도우 객체
+5. 응용 프로그램 객체
+6. DefWindowProc()
+
+- 정적 분할 윈도우 생성 예제(Splitter.zip의 구현 참고)
+13_3
