@@ -1,0 +1,16 @@
+3주차
+
+CObject 클래스 - 3단계 매크로
+
+MFC 전역함수 - Afx으로 시작
+
+
+-SDI 4 Class 와 Document/View구조
+
+메시지맵은 윈도우 메시지ID + 메시지 핸들러 ,AFX_MSGMAP_ENTRY
+
+동적 객체 생성 : 다큐먼트, 프레임, 뷰 생성
+pDocument = CreateNewDocument();
+pFrame = CreateNewFrame(pDocument, NULL);
+CreateView();
+InitInstance = true인 이유? -> false면 프로그램이 종료됨

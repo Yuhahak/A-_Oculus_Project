@@ -4,7 +4,8 @@
 
 
 - 데이터 교환 방법(UpdateData() 사용법 및 UpdateData() 
-호출 시의 DoDataExchange, DDX_Text, AfxSetWindowText, GetWindowText 호출 순서)
+호출 시의 DoDataExchange, DDX_Text, AfxSetWindowText, 
+			             GetWindowText 호출 순서)
 UpdateData(False) = m_strInput에 저장된 문자열을 편집 컨트롤로 보냄
 UpdateData(True) = 편집 컨트롤에 입력된 문자열을 m_strInput으로 가져옴
 

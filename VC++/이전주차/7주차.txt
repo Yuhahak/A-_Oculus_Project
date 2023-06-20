@@ -1,0 +1,35 @@
+메뉴(Menu)란?
+- 선택할 수 있는 명령의 집합
+- 컨텍스트 메뉴 : 열리는 메뉴, 작업하는 용도에 따라 다른메뉴열림
+-Access Key : 메뉴가 열린 상태에서 키보드로
+-Shortcut Key(단축키)
+
+
+코드를 이용한 메뉴 생성
+-CMenu 클래스를 이용한 메뉴 생성
+-CCmdUI 클래스를 이용한 메뉴 상태(활성/비활성) 설정
+
+윈도우와 윈도우 객체의 관계
+- Attch() : 윈도우 핸들을 이용하여 윈도우 객체와 윈도우 연결
+- Detach() : 윈도우 객체와 윈도우를 분리하면서 내부 핸들 값을 리턴
+
+
+메뉴 명령 처리하기
+-WM-COMMAND 메시지 발생
+- Invalidate() -> WM_PAINT -> OnPaint()
+
+메뉴 항목 갱신하기 (상태 변경하는 방법)
+- UPDATE_COMMAND_UI
+
+컨텍스트 메뉴(Context Menu) 구현하기 CChildView
+-WM-CONTEXTMENU -> OnContextMenu()
+팝업 메뉴는 TrackPopupMenu
+
+상태바 개념 및 구현하기
+- 프로그램의 현재 상태 정보를 보여줌
+- 여러개의 pane으로 나뉘어 필요한 정보를 표시함 -> CMainFrame의 indicators[]
+
+pCmdUI -> Enable();
+ON_UPDATE_COMMAND_UI(ID_INDICATOR_POS, OnUpdatePos)
+
+

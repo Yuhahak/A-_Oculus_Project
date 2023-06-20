@@ -1,0 +1,28 @@
+1주차
+윈도우 진입함수명 - WinMain
+윈도우 만드는거~ createwindow + 메시지 핸들러 + 윈도우 채우기
+
+1. 이벤트(메시지)가 발생했을 때 메시지 처리 과정
+키마 -> 시스템 메시지 큐 -> 애플케이션 메시지 큐 -> 메시지 루프
+-> 윈도우 프로시저 -> 디폴트 윈도우 프로시저
+
+2. 윈도우 메시지 4가지 종류
+-Window Message (윈도우에서 발생하는 메시지)
+-Command Message (메뉴 등에서 발생하는 메시지)
+-Notification Message (컨트롤에서 부모에게 보내는 메시지)
+-User Defined Message (사용자 정의 메시지)
+
+3. Win32 API 프로그램 기본 구조(윈도우 프로그램 작성 5단계)
+- 진입함수 _tWinMain작성
+- 윈도우 클래스 등록 ( WNDCLASSEX w , RegisterClassEx(&w) )
+- 윈도우 생성과 출력 ( CreateWindow() , ShowWindow(), UpdateWindow() )
+- 메시지 루프 작성 ( while(GetMessage() , DispatchMessage() )
+- 윈도우 프로시저 작성 ( CALLBACK WndProc() , return DefWindowProc() )
+
+4. 윈도우 관계 설정 : 부모/자식 관계와 소유/피소유 관계
+WS_CHILE(또는 WS_CHILDWINDOW) + 
+CreateWindow 함수의 8번째 파라미터 hWndParent에 부모 윈도우의 
+핸들값hWnd) 지정
+
+피소유 -> CHILEWINDOW지정하지 않고 hWndParent에 소유 윈도우의 핸들값
+(hWnd) 설정
