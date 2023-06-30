@@ -25,7 +25,7 @@ public class DragFish : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public GameObject dish;
     private void Start()
     {
-        oringPos = GetComponent<RectTransform>().position; //물고기 위치 초기화
+        oringPos = transform.localPosition; //물고기 위치 초기화
     }
 
     private void Update()

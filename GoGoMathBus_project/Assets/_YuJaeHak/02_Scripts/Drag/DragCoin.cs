@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,12 +12,18 @@ public class DragCoin : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         None, SetCoin
     }
 
+
     public CoinState coinState = CoinState.None;
 
     public static Vector2 startPos; // 시작위치
+    private Vector2 originPos; // 처음 위치 
     public float detectRange; //감지 범위
 
-    public GameObject CoinSet;
+    private bool CoinSet;
+    public GameObject CoinHome;
+    private string DiceName;
+
+    private bool CheckDice = true;
 
     public void OnDrawGizmos()
     {
@@ -27,13 +34,14 @@ public class DragCoin : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     // Start is called before the first frame update
     void Start()
     {
-        
+        originPos = GetComponent<RectTransform>().position; //물고기 위치 초기화
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        StartCoroutine(CC());
     }
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
@@ -65,26 +73,55 @@ public class DragCoin : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         int layerMask = 1 << 6; //6번 레이어
         var hits = Physics.SphereCastAll(transform.position, detectRange, Vector3.up, 0, layerMask);
 
-        if (hits.Length > 0)
+        switch (coinState) // 놨을때 원래 위치로
         {
+            case CoinState.None:
+                GetComponent<RectTransform>().position = originPos;
+                break;
+            case CoinState.SetCoin:
+                GetComponent<RectTransform>().position = originPos;
+                coinState = CoinState.None;
+                break;
+        }
+
+            if (hits.Length > 0) //감지된게 있으면
+            {
 
             switch (hits[0].transform.name)
-            {
-                case "CoinHome":
-                    switch (coinState)
-                    {
-                        case CoinState.None:
-                            transform.position = new Vector3(CoinSet.transform.position.x, CoinSet.transform.position.y, transform.position.z);
-                            transform.localScale = new Vector3(CoinSet.transform.localScale.x, CoinSet.transform.localScale.y, CoinSet.transform.localScale.z);
+                {
+                    case "CoinHome":
+                        {
+                            switch (coinState)
+                            {
+                                case CoinState.None:
+                                    transform.position = new Vector3(CoinHome.transform.position.x, CoinHome.transform.position.y, transform.position.z);
+                                    transform.localScale = new Vector3(CoinHome.transform.localScale.x, CoinHome.transform.localScale.y, CoinHome.transform.localScale.z);
+                                    coinState = CoinState.SetCoin;
+                                    CoinManager.instance.coinBaseState = CoinManager.CoinBaseState.KeepCoin;
+                                    DiceName = gameObject.name;
+                                    break;
+
+                                case CoinState.SetCoin:
+                                    break;
+                            }
                             break;
 
-                        case CoinState.SetCoin:
-                            break;
-                    }
-                    break;
-
-
+                        }
+                }
             }
         }
+
+    IEnumerator CC()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            if(CoinManager.instance.Coin[i].transform.localScale != new Vector3(1f, 1f, 1f))
+            {
+                
+            }
+        }
+        yield return new WaitForSeconds(0.1f);
     }
-}
+
+    }
+

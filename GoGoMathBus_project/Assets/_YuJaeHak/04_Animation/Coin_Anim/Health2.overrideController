@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Health2
+  m_Controller: {fileID: 9100000, guid: 66229af2aa97a054b8a44bc882cf68ae, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 60030fdaa69f2f0489a4b22b50d35fb8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6a96ed7e693206647955649de1801134, type: 2}
