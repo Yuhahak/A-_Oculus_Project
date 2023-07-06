@@ -7,6 +7,26 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 {
     public static Vector2 startPos; // 시작위치
     public float detectRange; //감지 범위
+    private Vector2 oringPos; //물고기 초기화 위치
+
+    public GameObject candy;
+
+
+    public enum CandyState
+    {
+        None, Home, Home1, Home2
+    }
+
+    CandyState candyState = CandyState.None;
+
+    private void Start()
+    {
+        oringPos = GetComponent<RectTransform>().position;
+    }
+
+    private void Update()
+    {
+    }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
@@ -41,11 +61,132 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
         if (hits.Length > 0) //접시가 감지되었을 때
         {
-            Debug.Log(hits[0].transform.name);
+            switch (hits[0].transform.name)
+            {
+                case "Candy_Home":
+                    switch (candyState)
+                    {
+                        case CandyState.None:
+                            {
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home;
+                                break;
+                            }
+                        case CandyState.Home1:
+                            {
+                                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home;
+                                break;
+                            }
+                        case CandyState.Home2:
+                            {
+                                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home;
+                                break;
+                            }
+
+                    }
+                    break;
+                case "Candy_Home_1":
+                    switch (candyState)
+                    {
+                        case CandyState.None:
+                            {
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home1;
+                                break;
+                            }
+                        case CandyState.Home:
+                            {
+                                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home1;
+                                break;
+                            }
+                        case CandyState.Home2:
+                            {
+                                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home1;
+                                break;
+                            }
+
+                    }
+                    break;
+                case "Candy_Home_2":
+                    switch (candyState)
+                    {
+                        case CandyState.None:
+                            {
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home2;
+                                break;
+                            }
+                        case CandyState.Home:
+                            {
+                                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home2;
+                                break;
+                            }
+                        case CandyState.Home1:
+                            {
+                                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home2;
+                                break;
+                            }
+
+                    }
+                    break;
+            }
+            //Debug.Log(hits[0].transform.name);
+        }
+        else
+        {
+            switch (candyState)
+            {
+                case CandyState.Home:
+                    {
+                        candyState = CandyState.None;
+                        break;
+                    }
+                case CandyState.Home1:
+                    {
+                        candyState = CandyState.None;
+                        break;
+                    }
+                case CandyState.Home2:
+                    {
+                       candyState = CandyState.None;
+                        break;
+                    }
+            }
+        }
+
+
+        if(candyState == CandyState.None)
+        {
+            GetComponent<RectTransform>().position = oringPos;
+            if (candy != null)
+            {
+                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+            }
+
         }
     }
 
-    //스테이트를 자기 이름으로 바꿔주기
-    //닿으면 각자의 리스트에 추가
+
     // 각 카운트가 3개일 때 엔딩
 }

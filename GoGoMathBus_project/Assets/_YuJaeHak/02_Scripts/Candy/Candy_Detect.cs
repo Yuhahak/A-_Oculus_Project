@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Candy_Detect : MonoBehaviour, IPointerUpHandler
+public class Candy_Detect : MonoBehaviour
 {
     public float detectRange; //감지 범위
+    public List<GameObject> candyList = new List<GameObject>();
+
+    public static Candy_Detect instance;
 
     public void OnDrawGizmos()
     {
@@ -14,9 +17,9 @@ public class Candy_Detect : MonoBehaviour, IPointerUpHandler
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-
+        instance = this;
     }
 
     // Update is called once per frame
@@ -27,14 +30,28 @@ public class Candy_Detect : MonoBehaviour, IPointerUpHandler
 
         if (hits.Length > 0) //접시가 감지되었을 때
         {
-            Debug.Log(hits[0].transform.name);
+
         }
     }
 
-    void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
-    {
 
+    public void AddCandy(GameObject candy)
+    {
+        candyList.Add(candy);
     }
 
+
+    public void CancelCandy(GameObject candy)
+    {
+
+        for (int i = 0; i < candyList.Count; i++)
+        {
+            if (candyList[i] == candy)
+            {
+                candyList.RemoveAt(i);
+            }
+        }
+
+    }
 
 }
