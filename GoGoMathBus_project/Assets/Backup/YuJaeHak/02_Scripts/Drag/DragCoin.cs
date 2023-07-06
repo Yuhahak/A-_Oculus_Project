@@ -123,5 +123,5 @@ public class DragCoin : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         yield return new WaitForSeconds(0.1f);
     }
 
-    }
+}
 

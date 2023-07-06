@@ -35,6 +35,8 @@ public class CasFishManager : MonoBehaviour
     public Text numberText_2;
     public Text numberText_1;
 
+    public GameClearController gameClearController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -105,6 +107,8 @@ public class CasFishManager : MonoBehaviour
         if(redDish.fishCount == redFishCount && BlueDish.fishCount == blueFishCount)
         {
             resultText.text = "성공!";
+            SuccessGame();
+
         }
 
         //실패
@@ -115,6 +119,11 @@ public class CasFishManager : MonoBehaviour
 
         }
         StartCoroutine(FishReset());
+    }
+
+    void SuccessGame()
+    {
+        gameClearController.UpdateClearCount();
     }
 
     //게임 초기화
