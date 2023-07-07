@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,17 +8,24 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 {
     public static Vector2 startPos; // 시작위치
     public float detectRange; //감지 범위
-    private Vector2 oringPos; //물고기 초기화 위치
+    public Vector2 oringPos; //캔디 초기화 위치
 
-    public GameObject candy;
+    public GameObject candy; // 감지된 그릇
 
+    public static Candy_Drag instance;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public enum CandyState
     {
         None, Home, Home1, Home2
     }
 
-    CandyState candyState = CandyState.None;
+    public CandyState candyState = CandyState.None;
 
     private void Start()
     {
@@ -26,11 +34,13 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     private void Update()
     {
+
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
         startPos = eventData.position;
+        gameObject.transform.SetAsLastSibling();
     }
 
     //드래그 중
@@ -56,12 +66,12 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
-        int layerMask = 1 << 6; //7번 레이어
+        int layerMask = 1 << 6; //6번 레이어
         var hits = Physics.SphereCastAll(transform.position, detectRange, Vector3.up, 0, layerMask);
 
         if (hits.Length > 0) //접시가 감지되었을 때
         {
-            switch (hits[0].transform.name)
+            switch (hits[0].transform.name)  // 감지된게 캔디홈이면 상태를 캔디홈으로 바꿔 중복호출 방지
             {
                 case "Candy_Home":
                     switch (candyState)
@@ -155,7 +165,7 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         }
         else
         {
-            switch (candyState)
+            switch (candyState)  //감지되지 않았을 때
             {
                 case CandyState.Home:
                     {
@@ -176,7 +186,7 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         }
 
 
-        if(candyState == CandyState.None)
+        if(candyState == CandyState.None)  // 캔디 상태가 None이면 원래 위치, 리스트에서 빼기
         {
             GetComponent<RectTransform>().position = oringPos;
             if (candy != null)
@@ -185,6 +195,15 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
             }
 
         }
+    }
+
+
+    public void FailGame()  //게임 실패
+    {
+        candy.GetComponent<Candy_Detect>().ClearCandy();
+        Candy_Manager.instance.ReCandy();
+        Candy_Manager.instance.isOver = false;
+
     }
 
 
