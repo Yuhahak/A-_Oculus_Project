@@ -80,6 +80,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_YuJaeHak/01_Scene/AR_EX.unity
     guid: b3b32ecb9a8b9b249abae5e5b1a99053
+  - enabled: 1
+    path: Assets/_YuJaeHak/01_Scene/Candy_Game.unity
+    guid: 45db5033edfd90040823b1a3c418510e
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 8a654be099b6df94592b52621603df4e, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: a7b37e7f8ec2de8419cc72a49f8999e2, type: 2}

@@ -1958,11 +1958,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -2596,7 +2596,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC0AC\uD0D5\uC740 \uBA87 \uAC1C\uC529 \uB123\uC5B4\uC57C \uD560\uAE4C\uC694?"
+  m_Text: "3\uAC1C\uC529 \uB2F4\uC544\uC8FC\uC138\uC694!"
 --- !u!222 &1112435086
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4721,7 +4721,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC0AC\uD0D5\uC740 \uBA87 \uAC1C\uC529 \uB123\uC5B4\uC57C \uD560\uAE4C\uC694?"
+  m_Text: "4\uAC1C\uC529 \uB2F4\uC544\uC8FC\uC138\uC694!"
 --- !u!222 &2081664475
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4886,6 +4886,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1012
       objectReference: {fileID: 0}
+    - target: {fileID: 4695460189622364874, guid: 5893760bd2d0b044c9cb7486de8aa695, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Candy_Game
+      objectReference: {fileID: 0}
     - target: {fileID: 4695460190095014209, guid: 5893760bd2d0b044c9cb7486de8aa695, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1012
@@ -4897,6 +4901,10 @@ PrefabInstance:
     - target: {fileID: 4695460190355356219, guid: 5893760bd2d0b044c9cb7486de8aa695, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 158
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695460190615257662, guid: 5893760bd2d0b044c9cb7486de8aa695, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4695460190615257663, guid: 5893760bd2d0b044c9cb7486de8aa695, type: 3}
       propertyPath: m_AnchorMax.x
