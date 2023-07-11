@@ -71,6 +71,8 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
         if (hits.Length > 0) //접시가 감지되었을 때
         {
+            Debug.Log(hits[0].transform.name);
+
             switch (hits[0].transform.name)  // 감지된게 캔디홈이면 상태를 캔디홈으로 바꿔 중복호출 방지
             {
                 case "Candy_Home":
