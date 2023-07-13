@@ -75,7 +75,7 @@ EditorBuildSettings:
     path: Assets/Backup/Scenes/LevelScene_03.unity
     guid: 1a7569c7b07a72e49bd551b10abae1b3
   - enabled: 0
-    path: Assets/_YuJaeHak/01_Scene/GameScene.unity
+    path: Assets/_YuJaeHak/01_Scene/Dice_Game.unity
     guid: adeab6921cb5a424f9a21fa5374e60d1
   - enabled: 1
     path: Assets/_YuJaeHak/01_Scene/AR_EX.unity

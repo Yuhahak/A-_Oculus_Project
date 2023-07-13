@@ -11,11 +11,16 @@ public class Candy_Manager : MonoBehaviour
 
     public GameObject Stage_1;  // 스테이지
     public GameObject Stage_2;
+    public GameObject Stage_3;
+    public GameObject Stage_4;
+    public GameObject Stage_5;
 
 
     public Candy_Detect Home;  //캔디가 들어갈 홈
     public Candy_Detect Home1;
     public Candy_Detect Home2;
+    public Candy_Detect Home3;
+
 
     public GameObject Nope; //틀렸을 때 이미지
 
@@ -46,7 +51,7 @@ public class Candy_Manager : MonoBehaviour
                     isOver = true;
                     ResultCandy();
                 }
-                if(Home.candyList.Count + Home1.candyList.Count + Home2.candyList.Count == 9 && !isOver)  // 실패
+                if (Home.candyList.Count + Home1.candyList.Count + Home2.candyList.Count == 9 && !isOver)  // 실패
                 {
                     StartCoroutine(NopeOn());
                     isOver = true;
@@ -55,12 +60,54 @@ public class Candy_Manager : MonoBehaviour
             }
             else if (Stage_2.activeSelf)  // Stage_2
             {
-                if(Home.candyList.Count == 4 && Home1.candyList.Count == 4) //성공
+                if (Home.candyList.Count == 4 && Home1.candyList.Count == 4) //성공
                 {
                     isOver = true;
                     ResultCandy();
                 }
                 if (Home.candyList.Count + Home1.candyList.Count == 8 && !isOver)  // 실패
+                {
+                    StartCoroutine(NopeOn());
+                    isOver = true;
+                    Candy_Drag.instance.FailGame();
+                }
+            }
+            if (Stage_3.activeSelf)  // Stage_2
+            {
+                if (Home.candyList.Count == 2 && Home1.candyList.Count == 2 && Home2.candyList.Count == 2 && Home3.candyList.Count == 2) //성공
+                {
+                    isOver = true;
+                    ResultCandy();
+                }
+                if (Home.candyList.Count + Home1.candyList.Count + Home2.candyList.Count + Home3.candyList.Count == 8 && !isOver)  // 실패
+                {
+                    StartCoroutine(NopeOn());
+                    isOver = true;
+                    Candy_Drag.instance.FailGame();
+                }
+            }
+            if (Stage_4.activeSelf)  // Stage_2
+            {
+                if (Home.candyList.Count == 2 && Home1.candyList.Count == 2 && Home2.candyList.Count == 2) //성공
+                {
+                    isOver = true;
+                    ResultCandy();
+                }
+                if (Home.candyList.Count + Home1.candyList.Count + Home2.candyList.Count == 6 && !isOver)  // 실패
+                {
+                    StartCoroutine(NopeOn());
+                    isOver = true;
+                    Candy_Drag.instance.FailGame();
+                }
+            }
+            if (Stage_5.activeSelf)  // Stage_2
+            {
+                if (Home.candyList.Count == 1 && Home1.candyList.Count == 1 && Home2.candyList.Count == 1 && Home3.candyList.Count == 1) //성공
+                {
+                    isOver = true;
+                    ResultCandy();
+                }
+                if (Home.candyList.Count + Home1.candyList.Count + Home2.candyList.Count + Home3.candyList.Count == 4 && !isOver)  // 실패
                 {
                     StartCoroutine(NopeOn());
                     isOver = true;

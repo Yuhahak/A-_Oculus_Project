@@ -37,24 +37,6 @@ public class NumberBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     }
 
-    //    IEnumerator HealthCount() //맞았을 때 코인하나씩 켜주기
-    //{
-    //    switch (Dice.instance.Health)
-    //    {
-    //        case 1:
-    //            Dice.instance.Health_[0].GetComponent<Animator>().SetTrigger("Coin");
-    //            break;
-    //        case 2:
-    //            Dice.instance.Health_[1].GetComponent<Animator>().SetTrigger("Coin");
-    //            break;
-    //        case 3:
-    //            Dice.instance.Health_[2].GetComponent<Animator>().SetTrigger("Coin");
-    //            break;
-    //    }
-
-    //    yield return new WaitForSeconds(0.01f);
-    //}
-
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData) //포인터가 블럭 위로 올라왔을 때
     {
         gameObject.GetComponent<Image>().color = new Color(75 / 255f, 160 / 255f, 160 / 255f);

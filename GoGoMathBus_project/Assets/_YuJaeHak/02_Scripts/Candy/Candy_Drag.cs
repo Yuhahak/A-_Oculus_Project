@@ -22,7 +22,7 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     public enum CandyState
     {
-        None, Home, Home1, Home2
+        None, Home, Home1, Home2, Home3
     }
 
     public CandyState candyState = CandyState.None;
@@ -101,6 +101,14 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
                                 candyState = CandyState.Home;
                                 break;
                             }
+                        case CandyState.Home3:
+                            {
+                                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home;
+                                break;
+                            }
 
                     }
                     break;
@@ -123,6 +131,14 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
                                 break;
                             }
                         case CandyState.Home2:
+                            {
+                                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home1;
+                                break;
+                            }
+                        case CandyState.Home3:
                             {
                                 candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
                                 candy = hits[0].transform.gameObject;
@@ -159,6 +175,51 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
                                 candyState = CandyState.Home2;
                                 break;
                             }
+                        case CandyState.Home3:
+                            {
+                                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home2;
+                                break;
+                            }
+
+                    }
+                    break;
+                case "Candy_Home_3":
+                    switch (candyState)
+                    {
+                        case CandyState.None:
+                            {
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home3;
+                                break;
+                            }
+                        case CandyState.Home:
+                            {
+                                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home3;
+                                break;
+                            }
+                        case CandyState.Home1:
+                            {
+                                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home3;
+                                break;
+                            }
+                        case CandyState.Home2:
+                            {
+                                candy.GetComponent<Candy_Detect>().CancelCandy(gameObject);
+                                candy = hits[0].transform.gameObject;
+                                candy.GetComponent<Candy_Detect>().AddCandy(gameObject);
+                                candyState = CandyState.Home3;
+                                break;
+                            }
 
                     }
                     break;
@@ -182,6 +243,11 @@ public class Candy_Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
                 case CandyState.Home2:
                     {
                        candyState = CandyState.None;
+                        break;
+                    }
+                case CandyState.Home3:
+                    {
+                        candyState = CandyState.None;
                         break;
                     }
             }

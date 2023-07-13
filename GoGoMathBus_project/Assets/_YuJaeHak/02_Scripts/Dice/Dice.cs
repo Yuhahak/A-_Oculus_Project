@@ -60,16 +60,6 @@ public class Dice : MonoBehaviour, IPointerClickHandler
         {
             HealthPanel.gameObject.SetActive(false);
         }
-
-        //if(Health == 3) //코인 3개를 다 모으면 엔딩
-        //{
-        //    isOver = true;
-
-        //    if(isOver == true)
-        //    {
-        //        StartCoroutine(Ending());
-        //    }
-        //}
     }
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData) //주사위를 클릭했을 때
