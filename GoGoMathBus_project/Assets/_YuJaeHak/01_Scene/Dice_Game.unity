@@ -5678,6 +5678,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6310400695482960514, guid: 5456be756a923e1468c5baa572f651ab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1204
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310400695482960514, guid: 5456be756a923e1468c5baa572f651ab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 923
+      objectReference: {fileID: 0}
     - target: {fileID: 6310400695636619600, guid: 5456be756a923e1468c5baa572f651ab, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Game_010102_NumberPuzzle_01
