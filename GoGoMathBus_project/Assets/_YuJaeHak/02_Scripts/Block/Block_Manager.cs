@@ -59,10 +59,4 @@ public class Block_Manager : MonoBehaviour
 
     }
 
-    IEnumerator Nope()
-    {
-        None.SetActive(true);
-        yield return new WaitForSeconds(0.35f);
-        None.SetActive(false);
-    }
 }
